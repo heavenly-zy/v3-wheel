@@ -1,14 +1,19 @@
 <template>
-  <Switch />
+  <Switch :value="checked" @input="checked = $event"/>
 </template>
 
-<script>
-import Switch from '../lib/Switch.vue'
+<script lang="ts">
+import Switch from '../lib/Switch.vue';
+import {ref} from 'vue';
 
 export default {
-  name: "SwitchDemo",
-  components: {Switch}
-}
+  name: 'SwitchDemo',
+  components: {Switch},
+  setup() {
+    const checked = ref(false);
+    return {checked};
+  },
+};
 </script>
 
 <style scoped>
