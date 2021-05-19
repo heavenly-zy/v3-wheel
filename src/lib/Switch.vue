@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked: modelValue}"><span></span></button>
+  <button @click="toggle" :class="{checked: value}"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -7,11 +7,11 @@
 export default {
   name: 'Switch',
   props: {
-    modelValue: Boolean,
+    value: Boolean,
   },
   setup(props, {emit}) {
     const toggle = () => {
-      emit('update:modelValue', !props.modelValue);
+      emit('update:value', !props.value);
     };
     return {toggle};
   },
