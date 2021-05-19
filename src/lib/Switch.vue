@@ -38,10 +38,15 @@ button {
     width: $h2;
     background-color: white;
     border-radius: $h / 2;
+    transition: left 250ms;
   }
 
   &.checked > span {
     left: calc(100% - #{$h2} - 2px);
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
