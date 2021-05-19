@@ -1,5 +1,4 @@
 <template>
-  Switch 的文档
   <Switch />
 </template>
 
