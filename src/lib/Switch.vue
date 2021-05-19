@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked:value}"><span></span></button>
+  <button @click="toggle" :class="{checked: modelValue}"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -7,11 +7,11 @@
 export default {
   name: 'Switch',
   props: {
-    value: Boolean,
+    modelValue: Boolean,
   },
   setup(props, {emit}) {
     const toggle = () => {
-      emit('update:value', !props.value);
+      emit('update:modelValue', !props.modelValue);
     };
     return {toggle};
   },
@@ -25,7 +25,7 @@ button {
   height: $h;
   width: $h * 2;
   border: none;
-  background-color: grey;
+  background: #bfbfbf;
   border-radius: $h / 2;
   position: relative;
 
@@ -37,11 +37,28 @@ button {
     width: $h2;
     background-color: white;
     border-radius: $h / 2;
-    transition: left 250ms;
+    transition: all 250ms;
   }
 
-  &.checked > span {
-    left: calc(100% - #{$h2} - 2px);
+  &.checked {
+    background: #1890ff;
+
+    > span {
+      left: calc(100% - #{$h2} - 2px);
+    }
+
+    &:active {
+      > span {
+        width: $h2 +4px;
+        margin-left: -4px;
+      }
+    }
+  }
+
+  &:active {
+    > span {
+      width: $h2 + 4px;
+    }
   }
 
   &:focus {

@@ -1,5 +1,5 @@
 <template>
-  <Switch v-model:value="checked"/>
+  <Switch v-model="checked"/>
 </template>
 
 <script lang="ts">
