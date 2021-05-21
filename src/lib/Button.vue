@@ -50,9 +50,30 @@ $radius: 4px;
   &:focus {
     outline: none;
   }
-  // 消除 firefox 浏览器上 button
+
+  // 消除 firefox 浏览器上 button 的虚线
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.wheel-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+
+    &:hover, &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+
+  &.wheel-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+
+    &:hover, &:focus {
+      background-color: darken(white, 5%);
+    }
   }
 }
 </style>
