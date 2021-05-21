@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked: value}"><span></span></button>
+  <button class="wheel-switch" @click="toggle" :class="{'wheel-checked': value}"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -18,10 +18,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
-button {
+.wheel-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -46,7 +46,7 @@ button {
     }
   }
 
-  &.checked {
+  &.wheel-checked {
     background: #1890ff;
 
     > span {

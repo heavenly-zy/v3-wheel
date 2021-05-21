@@ -1,5 +1,5 @@
 <template>
-  <button class="wheel-button" :class="{[`theme-${theme}`]: theme}">
+  <button class="wheel-button" :class="{[`wheel-theme-${theme}`]: theme}">
     <slot/>
   </button>
 </template>
@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
@@ -50,7 +50,7 @@ $radius: 4px;
   &:focus {
     outline: none;
   }
-
+  // 消除 firefox 浏览器上 button
   &::-moz-focus-inner {
     border: 0;
   }
