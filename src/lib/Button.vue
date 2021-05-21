@@ -9,7 +9,7 @@
 import {computed} from 'vue';
 
 export default {
-  inheritAttrs: false,
+  // inheritAttrs: false,
   name: 'Button',
   props: {
     theme: {
