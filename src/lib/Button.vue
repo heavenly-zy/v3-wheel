@@ -35,7 +35,6 @@ export default {
   },
   setup(props) {
     const {theme, size, level} = props;
-    console.log(props);
     const classes = computed(() => {
       return {
         [`wheel-theme-${theme}`]: theme,
