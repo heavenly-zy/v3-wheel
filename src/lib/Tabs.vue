@@ -1,19 +1,32 @@
 <template>
   <div class="wheel-tabs">
     <div class="wheel-tabs-nav">
-      <div class="wheel-tabs-nav-item" v-for="(t, index) in titles" :key="index">{{ t }}</div>
+      <div class="wheel-tabs-nav-item"
+           v-for="(t, index) in titles"
+           :key="index"
+           @click="select(t)"
+           :class="{selected: t===selected}"
+      >{{ t }}
+      </div>
     </div>
     <div class="wheel-tabs-content">
-      <component v-for="(c,index) in defaults" :is="c" :key="index"/>
+      <!-- 注意这里需要提供一个 key，否则组件内容不会被更新，详见 https://github.com/vuejs/vue-next/issues/2013#issuecomment-685001660 -->
+      <component class="wheel-tabs-content-item" :is="current" :key="selected"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Tab from './Tab.vue';
+import {computed} from 'vue';
 
 export default {
   name: 'Tabs',
+  props: {
+    selected: {
+      type: String,
+    },
+  },
   setup(props, context) {
     const defaults = context.slots.default();
     defaults.forEach(tag => {
@@ -24,7 +37,15 @@ export default {
     const titles = defaults.map(tag => {
       return tag.props.title;
     });
-    return {defaults, titles};
+    const current = computed(() => {
+      return defaults.filter(tag => {
+        return tag.props.title === props.selected;
+      })[0];
+    });
+    const select = (title: string) => {
+      context.emit('update:selected', title);
+    };
+    return {defaults, titles, current, select};
   },
 };
 </script>
