@@ -6,9 +6,10 @@
            :key="index"
            @click="select(t)"
            :class="{selected: t===selected}"
+           :ref="el => {if(el) navItems[index] = el}"
       >{{ t }}
       </div>
-      <div class="wheel-tabs-nav-indicator"></div>
+      <div class="wheel-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="wheel-tabs-content">
       <!-- 注意这里需要提供一个 key，否则组件内容不会被更新，详见 https://github.com/vuejs/vue-next/issues/2013#issuecomment-685001660 -->
@@ -19,7 +20,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue';
-import {computed} from 'vue';
+import {computed, onMounted, ref} from 'vue';
 
 export default {
   name: 'Tabs',
@@ -29,6 +30,14 @@ export default {
     },
   },
   setup(props, context) {
+    const navItems = ref<HTMLDivElement[]>([]);
+    const indicator = ref<HTMLDivElement>(null);
+    onMounted(() => {
+      const divs = navItems.value;
+      const result = divs.find(div => div.classList.contains('selected'));
+      const {width} = result.getBoundingClientRect();
+      indicator.value.style.width = `${width}px`;
+    });
     const defaults = context.slots.default();
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
@@ -46,7 +55,7 @@ export default {
     const select = (title: string) => {
       context.emit('update:selected', title);
     };
-    return {defaults, titles, current, select};
+    return {defaults, titles, current, select, navItems, indicator};
   },
 };
 </script>
