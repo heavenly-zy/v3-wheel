@@ -8,6 +8,7 @@
            :class="{selected: t===selected}"
       >{{ t }}
       </div>
+      <div class="wheel-tabs-nav-indicator"></div>
     </div>
     <div class="wheel-tabs-content">
       <!-- 注意这里需要提供一个 key，否则组件内容不会被更新，详见 https://github.com/vuejs/vue-next/issues/2013#issuecomment-685001660 -->
@@ -60,6 +61,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
 
     &-item {
       padding: 8px 0;
@@ -73,6 +75,15 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+
+    &-indicator {
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background-color: $blue;
+      left: 0;
+      bottom: -1px;
     }
   }
 
