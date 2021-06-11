@@ -51,7 +51,7 @@ export default {
     const defaults = context.slots.default();
     // 判断插槽传入的组件是否为 Tab 组件
     defaults.forEach(tag => {
-      if (tag.type !== Tab) {
+      if (tag.type.name !== Tab.name) {
         throw new Error('Tabs 子标签必须是 Tab');
       }
     });
