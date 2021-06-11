@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import {ref} from 'vue';
-import Switch from '../lib/Switch.vue';
+import {Switch} from '../lib/index.ts';
 
 export default {
   name: 'Switch1.demo',

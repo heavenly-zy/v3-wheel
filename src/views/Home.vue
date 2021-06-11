@@ -5,7 +5,7 @@
       <h1>v3-wheel</h1>
       <h2>一个厉害的 UI 框架</h2>
       <p class="actions">
-        <a href="https://github.com">GitHub</a>
+        <a href="https://github.com/heavenly-zy/v3-wheel">GitHub</a>
         <router-link to="/doc">开始</router-link>
       </p>
     </div>

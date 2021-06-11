@@ -5,7 +5,7 @@
 然后在你的代码中写入下面的代码
 
 ```js
-import {Button, Tabs, Switch, Dialog} from "v3-wheel"
+import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "v3-wheel"
 ```
 
 就可以使用我提供的组件了。
@@ -21,7 +21,7 @@ import {Button, Tabs, Switch, Dialog} from "v3-wheel"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "v3-wheel"
+import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "v3-wheel"
 export default {
   components: {Button}
 }
